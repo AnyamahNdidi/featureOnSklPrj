@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaMagento } from "react-icons/fa";
 import RegModal from "../Regpages/RegModal"
+import { AppContext } from "../GlobalAuth/GlobalAuth"
+import { app } from "../Peter/firebase"
+import { Button } from "antd"
+import { useHistory } from "react-router-dom"
+import { CaretDownOutlined } from '@ant-design/icons';
+import "./Allstyle.css"
+
 import {
   Nav,
   NavbarContainer,
@@ -14,9 +21,30 @@ import {
 } from "./NavBar.element";
 import { BrowserRouter as Router } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
+import SignDisplay from "./SignDisplay";
 
 const NavBar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(true);
+
+  const [show, setShow] = useState(false);
+  const [cssChange, setcssChange] = useState(true)
+
+  const { current } = React.useContext(AppContext)
+  const { datause } = React.useContext(AppContext)
+  const hist = useHistory()
+
+
+  const changeCss = () => {
+    setcssChange(!cssChange)
+  }
+
+  const diSignOut = () => {
+    setShow((prev) => !prev)
+  };
+  const signOutUser = () => {
+    app.auth().signOut();
+    hist.push("/")
+  }
 
   const changeNav = () => {
     if (window.scrolY >= 80) {
@@ -50,29 +78,63 @@ const NavBar = ({ toggle }) => {
             </NavItem>
 
             <NavItem>
-              <NavLinks to="/overview">Ola</NavLinks>
+              <NavLinks to="/overview">Overview</NavLinks>
             </NavItem>
 
             <NavItem>
-              <NavLinks to="/prospect">Gideon</NavLinks>
+              <NavLinks to="/prospect">Prospects</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/whatis">Lekan</NavLinks>
+              <NavLinks to="/whatis">What is Coding</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/Elementry">Olorunda</NavLinks>
+              <NavLinks to="/Elementry">Elementry</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/curriculum">Peter</NavLinks>
+              <NavLinks to="/curriculum">Curriculum</NavLinks>
             </NavItem>
 
             <NavItem>
-              <NavLinks to="signup">JOIN FOR FREE</NavLinks>
+
+              {
+                current ? <NavLinks to="/dasboard">Dashboard</NavLinks>
+                  : null
+              }
+
             </NavItem>
+
+
           </NavMenu>
 
           <NavBtn>
-            <RegModal />
+
+            {
+              current ?
+                <div className={cssChange ? "first1" : "second1"}>
+                  <div style={{ display: "flex", justifyContent: "center" }}
+                    onClick={() => {
+                      changeCss()
+                      diSignOut()
+                    }}
+                  >
+                    <img
+                      src={datause && datause.avatar}
+                      alt="Avatar"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "50%",
+                        border: "2px solid white",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <CaretDownOutlined />
+
+                  </div>
+                  <SignDisplay show={show} setShow={setShow} />
+                </div> : <RegModal />
+            }
+
           </NavBtn>
         </NavbarContainer>
       </Nav>
