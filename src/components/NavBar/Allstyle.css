@@ -1,0 +1,16 @@
+
+
+.first1{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0px;
+  justify-content: center;
+  align-items: center;
+}
+.second1{
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px
+}

@@ -59,7 +59,8 @@ export default function TransitionsModal() {
 
   const SignInUser = async () => {
     await app.auth().signInWithEmailAndPassword(email, password);
-    hist.push("/dashboard");
+    hist.push("/dasboard");
+
   };
 
   const uploadImage = async (e) => {
@@ -288,8 +289,8 @@ export default function TransitionsModal() {
                         <Button
                           onClick={() => {
                             SignInUser()
-
                             handleClose()
+
                           }}
                           type="primary"
                           // danger

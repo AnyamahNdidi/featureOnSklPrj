@@ -44,6 +44,8 @@ const Dashboard1 = () => {
         style={{
           display: "flex",
           flexDirection: "row",
+          background: "#2E3347"
+
         }}
       >
         <Sider
@@ -51,6 +53,7 @@ const Dashboard1 = () => {
             height: "100vh",
             color: "white",
             zIndex: "1",
+            background: "#2E3347"
           }}
           collapsed={toggle}
         >
@@ -61,6 +64,7 @@ const Dashboard1 = () => {
                 fontWeight: "bold",
                 margin: "10px 25px",
                 cursor: "pointer",
+
               }}
               onClick={Toggled}
             />
@@ -76,13 +80,17 @@ const Dashboard1 = () => {
             />
           )}
 
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu style={{
+            background: '#2E3347'
+          }} mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item
               style={{
                 display: "flex",
                 alignItems: "center",
                 margin: "30px 0",
                 height: "60px",
+                color: "white",
+                background: "red"
               }}
               onClick={() => {
                 setCourses(true);
@@ -98,6 +106,7 @@ const Dashboard1 = () => {
                     fontWeight: "bold",
                     margin: "10px 0px",
                     cursor: "pointer",
+
                   }}
                 />
               }
@@ -120,6 +129,7 @@ const Dashboard1 = () => {
                 alignItems: "center",
                 margin: "30px 0",
                 height: "60px",
+                color: "white"
               }}
               onClick={() => {
                 setCourses(false);
@@ -157,6 +167,7 @@ const Dashboard1 = () => {
                 alignItems: "center",
                 margin: "30px 0",
                 height: "60px",
+                color: "white"
               }}
               onClick={() => {
                 setCourses(false);
@@ -195,6 +206,7 @@ const Dashboard1 = () => {
                 alignItems: "center",
                 margin: "30px 0",
                 height: "60px",
+                color: "white"
               }}
               onClick={() => {
                 setCourses(false);
