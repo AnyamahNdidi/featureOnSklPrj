@@ -6,7 +6,7 @@ import NdiHome from "./components/Ndi/NdiHome";
 import NavBar from "./components/NavBar/index";
 import SideBar from "./components/SideBar/SideBar";
 import React from "react"
-import Footer from "./components/Footer";
+
 import Elementry from "./components/samuel/Elementry/Elementry"
 import CurriculumHolder from "./components/Peter/CurriculumHolder";
 import Gideon from "./components/Prospects/Gideon";
@@ -22,6 +22,8 @@ import SelectCourse from "./components/Regpages/GidReg/WelcomePage/SelectCourse"
 import Registration from "./components/Regpages/GidReg/WelcomePage/SignUp/Registration";
 import Dashboard from "./components/Dash/DashBord/Dashboard"
 import { AppProvider } from "./components/GlobalAuth/GlobalAuth"
+import Footer from "./components/Footer/index"
+
 
 
 function App() {
@@ -49,10 +51,12 @@ function App() {
           <Route exact path="/first" component={First} />
           <Route exact path="/second" component={Second} />
           <Route exact path="/course" component={SelectCourse} />
+
           <Route exact path="/pry" component={pry} />
           <Route exact path="/jun" component={jun} />
           <Route exact path="/sen" component={sen} />
         </Switch>
+        <Footer />
 
       </Router>
     </AppProvider>

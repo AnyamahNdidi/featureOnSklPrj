@@ -4,7 +4,7 @@ const Curriculum = () => {
   return (
     <div className="courseData">
       <center>
-        <h2>Self-paced learning for all ages & experience levels</h2>
+        <h2>This is your course</h2>
         <div
           style={{
             width: "80%",

@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 // import { app } from "../../base";
 import { useHistory } from "react-router-dom";
 import { app } from "../../Peter/firebase";
-import { AppContext } from "../SignUp/Auth";
+import { AppContext } from "../../GlobalAuth/GlobalAuth";
 
 const courseSelected = app.firestore().collection("user");
 
@@ -140,7 +140,7 @@ const SelectACourse = () => {
     hist.push("/showCourse");
   };
 
-  const { newCurrent } = useContext(AppContext);
+  const { datause } = useContext(AppContext);
   return (
     <div>
       <br />
@@ -157,7 +157,7 @@ const SelectACourse = () => {
           marginTop: "100px",
         }}
       >
-        {newCurrent && newCurrent.profile}
+        {datause && datause}
       </center>
       <br />
       <center>

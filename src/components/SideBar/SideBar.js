@@ -68,6 +68,11 @@ const SideBar = ({ isOpen, toggle }) => {
             <SidebarLink to="/curriculum" onClick={toggle}>
               Curriculum
             </SidebarLink>
+
+            {
+              current ? <SidebarLink to="/dasboard">Dashboard</SidebarLink>
+                : null
+            }
           </SidebarMenu>
           <SideBtnWrap>
 
