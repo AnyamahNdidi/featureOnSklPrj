@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
-import { AppContext } from "../SignUp/Auth";
+import { AppContext } from "../../GlobalAuth/GlobalAuth";
 import { app } from "../../Peter/firebase";
 
 const regCourse = app.firestore().collection("user");

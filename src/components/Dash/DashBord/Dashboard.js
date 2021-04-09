@@ -44,7 +44,7 @@ const Dashboard1 = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          background: "#2E3347"
+
 
         }}
       >

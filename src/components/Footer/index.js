@@ -82,7 +82,7 @@ const Footer = () => {
           </FooterLinksWrapper>
         </FooterLinksContainer>
 
-        <SocialMedia>
+        {/* <SocialMedia>
           <SocialMediaWrap>
             <SocialMediaLogo onClick={toggleHome}>
               TEENS PROJECT
@@ -124,7 +124,7 @@ const Footer = () => {
               </SocialIconLink>
             </SocialIcon>
           </SocialMediaWrap>
-        </SocialMedia>
+        </SocialMedia> */}
       </FooterWrap>
     </FooterContainer>
   );

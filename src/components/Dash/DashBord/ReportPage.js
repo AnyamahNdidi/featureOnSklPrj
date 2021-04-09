@@ -1,9 +1,9 @@
 import { Button, Input } from "antd";
 import React, { useState, useEffect, useContext } from "react";
 import { app } from "../../Peter/firebase";
-import { AppContext } from "../SignUp/Auth";
+import { AppContext } from "../../GlobalAuth/GlobalAuth";
 
-const regCourse = app.firestore().collection("user");
+const regCourse = app.firestore().collection("studentreg");
 
 const ReportPage = () => {
   const [attention, setAttention] = useState("");
