@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Layout, Menu } from "antd";
 // import HeaderViewer from "../HeaderViewer";
+import "./Dashstyle.css"
 
 import {
   HeaderFile,
@@ -34,6 +35,7 @@ const Dashboard1 = () => {
   const [perform, setPerform] = useState(false);
   const [show, setShow] = useState(false);
 
+
   const Toggled = () => {
     setToggle(!toggle);
   };
@@ -54,7 +56,9 @@ const Dashboard1 = () => {
             color: "white",
             zIndex: "1",
             background: "#2E3347"
+
           }}
+          className="sidenave"
           collapsed={toggle}
         >
           {toggle ? (
