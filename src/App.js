@@ -63,7 +63,6 @@ function App() {
           <Route exact path="/Select" component={Select} />
           <Route exact path="/show" component={Show} />
           <Route exact path="/coursepages" component={CoursePages} />
-
           <Route exact path="/pry" component={pry} />
           <Route exact path="/jun" component={jun} />
           <Route exact path="/sen" component={sen} />

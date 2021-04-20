@@ -2,34 +2,68 @@ import React, { useState } from 'react'
 import { app } from "../../Peter/firebase";
 import { Button, Input } from "antd";
 
-const regCourse = app.firestore().collection("user");
+const regCourse = app.firestore().collection("studentreg");
 
 function Inputscore() {
   const [attention4, setAttention4] = useState("");
   const [wellUnderstood4, setWellUnderstood4] = useState("");
   const [interesting4, setInteresting4] = useState("");
-
+  const [show, setShow] = useState(false)
   const [toggle, setToggle] = useState(false);
+  const [rating, setRating] = useState()
 
   const onToggle = () => {
     setToggle(true);
   };
-
   const postRating4 = async () => {
     const userPresent = await app.auth().currentUser;
 
     if (userPresent) {
       regCourse
         .doc(userPresent.uid)
-        .collection("rating4")
+        .collection("pythonwk1rating")
         .doc()
         .set({
           attention: parseInt(attention4),
           wellUnderstood: parseInt(wellUnderstood4),
           interesting: parseInt(interesting4),
+          show
         });
     }
   };
+
+
+  const readTask = async () => {
+    const getTask = await app.auth().currentUser
+
+    if (getTask) {
+      await
+        regCourse.doc(getTask.uid)
+          .collection("pythonwk1rating")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setRating(item)
+          })
+      console.log(setRating)
+    }
+
+  }
+  const faseButton = async () => {
+    const userPresent = await app.auth().currentUser;
+    if (userPresent) {
+      regCourse.doc(userPresent.uid).collection("pythonwk1rating")
+        .doc().update({
+          show: toggle
+        })
+    }
+  }
+
+  React.useEffect(() => {
+    readTask()
+  }, [])
 
   return (
     <div >
@@ -87,9 +121,11 @@ function Inputscore() {
         />
         <Button
           type="primary"
+          disabled={show}
           onClick={() => {
-            postRating4();
-            onToggle();
+            postRating4()
+            faseButton()
+            setToggle(true);
             console.log("this is one");
           }}
         >

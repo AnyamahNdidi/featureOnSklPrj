@@ -250,6 +250,11 @@ const CurriculumFiles = () => {
 
 
       <div className="courseDataall">
+
+
+
+
+        
         <div
           style={{
             display: "flex",
