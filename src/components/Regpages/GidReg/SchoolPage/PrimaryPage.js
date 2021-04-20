@@ -28,17 +28,17 @@ function PrimaryPage() {
         sub1: {
           title: "Scratch",
           Image: "https://firebasestorage.googleapis.com/v0/b/little-coders.appspot.com/o/167733540_10216246426393257_1525750981305819834_n.jpg?alt=media&token=3980bd51-d528-40bb-b70c-8565738e1ae3",
-          desc: "jhlsgsyukdgvulizdfhd;fhdv;hvjkdvbjlvbzvljvb;jvg;bvjc;gjkbvc;x jb xcl jnbcl gjcnbcjhlbc hlc blxch bvxclbcl hcbjlxc jbccjkb ;jk b b;bjkdv;j kbcv;jcjbvcbjc;cjbljcx bjcx b;c j;jij"
+          desc: "After completing a tutorial, kids apply the concepts they've learned and experiment with what they've built."
         },
         sub2: {
           title: "App Inventor",
           Image: "https://firebasestorage.googleapis.com/v0/b/little-coders.appspot.com/o/home-space-cadet.png?alt=media&token=7ab58403-c779-4bb0-86e6-c0719fc443bc",
-          desc: "jhlsgsyukdgvulizdfhd;fhdv;hvjkdvbjlvbzvljvb;jvg;bvjc;gjkbvc;x jb xcl jnbcl gjcnbcjhlbc hlc blxch bvxclbcl hcbjlxc jbccjkb ;jk b b;bjkdv;j kbcv;jcjbvcbjc;cjbljcx bjcx b;c j;jij"
+          desc: "After completing a tutorial, kids apply the concepts they've learned and experiment with what they've built."
         },
         sub3: {
           title: " Intoduction To Python",
           Image: "https://firebasestorage.googleapis.com/v0/b/little-coders.appspot.com/o/python-2.png?alt=media&token=26b32bed-aa4b-4263-8f85-6738d21ffba1",
-          desc: "jhlsgsyukdgvulizdfhd;fhdv;hvjkdvbjlvbzvljvb;jvg;bvjc;gjkbvc;x jb xcl jnbcl gjcnbcjhlbc hlc blxch bvxclbcl hcbjlxc jbccjkb ;jk b b;bjkdv;j kbcv;jcjbvcbjc;cjbljcx bjcx b;c j;jij"
+          desc: "After completing a tutorial, kids apply the concepts they've learned and experiment with what they've built."
         }
       })
 

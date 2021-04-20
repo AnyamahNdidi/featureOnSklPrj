@@ -15,7 +15,9 @@ const HeaderView = () => {
               color: "red",
               fontSize: "20px",
               height: "50px",
+              width: "290px"
               // backgroundColor:
+
             }}
           >
             Get your School involve

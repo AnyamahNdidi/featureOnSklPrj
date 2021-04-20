@@ -21,6 +21,7 @@ function JuniorPage() {
           Image: "https://firebasestorage.googleapis.com/v0/b/little-coders.appspot.com/o/python-2.png?alt=media&token=26b32bed-aa4b-4263-8f85-6738d21ffba1",
           desc: "After completing a tutorial, kids apply the concepts they've learned and experiment with what they've built."
         },
+
         sub2: {
           title: "Robotics",
           Image: "https://firebasestorage.googleapis.com/v0/b/little-coders.appspot.com/o/pexels-alex-knight-2599244.jpg?alt=media&token=e9733c8a-ac68-4343-be7f-0a962a68c112",
@@ -31,6 +32,7 @@ function JuniorPage() {
           Image: "https://firebasestorage.googleapis.com/v0/b/little-coders.appspot.com/o/pexels-markus-spiske-1089440.jpg?alt=media&token=df0bc189-a034-43f5-8589-8d887887182d",
           desc: "After completing a tutorial, kids apply the concepts they've learned and experiment with what they've built."
         },
+
       })
 
     }

@@ -77,18 +77,18 @@ const NavBar = ({ toggle }) => {
               <NavLinks to="/">Home</NavLinks>
             </NavItem>
 
+            <NavItem>
+              <NavLinks to="/curriculum">Curriculum</NavLinks>
+            </NavItem>
+
             <div className="dropdown">
-              <NavLinks to="/overview">
-                Overview <CaretDownOutlined style={{ marginTop: "5px" }} />
+              <NavLinks to="/prospect">
+                Prospects <CaretDownOutlined style={{ marginTop: "5px" }} />
               </NavLinks>
               <div className="dropdown_content">
-                <a href="/prospect" to="/prospect">
-                  Prospects
-                </a>
 
-                <a href="/whatis" to="/whatis">
-                  What is Coding
-                </a>
+
+
 
                 <a href="/Elementry" to="/Elementry">
                   Elementry
@@ -96,9 +96,7 @@ const NavBar = ({ toggle }) => {
               </div>
             </div>
 
-            <NavItem>
-              <NavLinks to="/curriculum">Curriculum</NavLinks>
-            </NavItem>
+
 
             <NavItem>
 

@@ -246,1275 +246,1284 @@ const CurriculumFiles = () => {
   }, []);
 
   return (
-    <div className="courseData">
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserData.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+    <div className="allcoursecon">
+
+
+      <div className="courseDataall">
+
+
+
+
+        
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserData.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserData.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserData.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserData.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserData.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
-      <div
+        </div>
+        <div
 
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserData5.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserData5.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserData5.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserData5.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserData5.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserData5.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserData6.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserData6.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserData6.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserData6.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserData6.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserData6.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
+        </div>
 
 
 
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserDatajs1.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserDatajs1.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserDatajs1.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserDatajs1.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserDatajs1.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserDatajs1.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserDatajs2.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserDatajs2.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserDatajs2.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserDatajs2.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserDatajs2.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserDatajs2.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserDatajs3.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserDatajs3.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserDatajs3.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserDatajs3.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserDatajs3.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserDatajs3.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
+        </div>
 
 
 
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserDatass1.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserDatass1.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserDatass1.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserDatass1.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserDatass1.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserDatass1.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserDatass2.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserDatass2.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserDatass2.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserDatass2.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserDatass2.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserDatass2.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        {readUserDatass3.map(({ id, sub1, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {readUserDatass3.map(({ id, sub1, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub1.Image} alt="pix1" className="image" />
-                <h3>{sub1.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub1.Image} alt="pix1" className="image" />
+                  <h3>{sub1.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub1.desc}</p>
                 </div>
-                <p className="course__p">{sub1.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub1.desc}
+                  image={sub1.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub1.desc}
-                image={sub1.Image}
+          ))}
 
-              />
-            ) : null}
-          </div>
-        ))}
-
-        {readUserDatass3.map(({ id, sub2, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+          {readUserDatass3.map(({ id, sub2, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub2.Image} alt="pix1" className="image" />
-                <h3>{sub2.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub2.Image} alt="pix1" className="image" />
+                  <h3>{sub2.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub2.desc}</p>
                 </div>
-                <p className="course__p">{sub2.desc}</p>
               </div>
-            </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub2.desc}
-                image={sub2.Image}
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub2.desc}
+                  image={sub2.Image}
 
-              />
-            ) : null}
-          </div>
-        ))}
-        {readUserDatass3.map(({ id, sub3, }) => (
-          <div
-            key={id}
-            className="card"
-            style={{
-              background: "white",
-              width: "300px",
-              height: "390px",
-              margin: "0px 10px",
-              marginTop: "20px",
-              borderRadius: "5px",
-            }}
-          >
+                />
+              ) : null}
+            </div>
+          ))}
+          {readUserDatass3.map(({ id, sub3, }) => (
             <div
-              className="courseData"
-              onClick={(id) => {
-                setVisible(true);
-                // hist.push("/modal");
+              key={id}
+              className="card"
+              style={{
+                background: "white",
+                width: "300px",
+                height: "390px",
+                margin: "0px 10px",
+                marginTop: "20px",
+                borderRadius: "5px",
               }}
             >
-              <div className="course__hover">
-                <img src={sub3.Image} alt="pix1" className="image" />
-                <h3>{sub3.title} </h3>
-                <div className="course__side">
-                  {/* <p> {level}</p> */}
-                  <div className="course__sideInner">
-                    <LaptopOutlined />
+              <div
+                className="courseData"
+                onClick={(id) => {
+                  setVisible(true);
+                  // hist.push("/modal");
+                }}
+              >
+                <div className="course__hover">
+                  <img src={sub3.Image} alt="pix1" className="image" />
+                  <h3>{sub3.title} </h3>
+                  <div className="course__side">
+                    {/* <p> {level}</p> */}
+                    <div className="course__sideInner">
+                      <LaptopOutlined />
 
+                    </div>
                   </div>
+                  <p className="course__p">{sub3.desc}</p>
                 </div>
-                <p className="course__p">{sub3.desc}</p>
               </div>
+              {visible ? (
+                <MUModal
+                  id={id}
+                  desc={sub3.desc}
+                  image={sub3.Image}
+
+                />
+              ) : null}
             </div>
-            {visible ? (
-              <MUModal
-                id={id}
-                desc={sub3.desc}
-                image={sub3.Image}
-
-              />
-            ) : null}
-          </div>
-        ))}
+          ))}
 
 
+        </div>
       </div>
     </div>
   );

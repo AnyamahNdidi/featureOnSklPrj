@@ -23,6 +23,12 @@ import Registration from "./components/Regpages/GidReg/WelcomePage/SignUp/Regist
 import Dashboard from "./components/Dash/DashBord/Dashboard"
 import { AppProvider } from "./components/GlobalAuth/GlobalAuth"
 import Footer from "./components/Footer/index"
+import Selecta from "./components/Dash/DashBord/SelectYourCourse"
+import NewDash from "./components/NewDash/Newdash"
+import Report from "./components/Dash/DashBord/ReportPage"
+import Select from "./components/Dash/DashBord/SelectYourCourse"
+import Show from "./components/Dash/DashBord/ShowTheCourse"
+import CoursePages from "./components/Dash/DashBord/CoursesPaage"
 
 
 
@@ -51,7 +57,12 @@ function App() {
           <Route exact path="/first" component={First} />
           <Route exact path="/second" component={Second} />
           <Route exact path="/course" component={SelectCourse} />
-
+          <Route exact path="/seleta" component={Selecta} />
+          <Route exact path="/newdash" component={NewDash} />
+          <Route exact path="/report" component={Report} />
+          <Route exact path="/Select" component={Select} />
+          <Route exact path="/show" component={Show} />
+          <Route exact path="/coursepages" component={CoursePages} />
           <Route exact path="/pry" component={pry} />
           <Route exact path="/jun" component={jun} />
           <Route exact path="/sen" component={sen} />

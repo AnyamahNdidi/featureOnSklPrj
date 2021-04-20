@@ -1,5 +1,7 @@
+import React, { useContext, useState } from 'react'
+
 import { Button } from "antd";
-import React, { useContext } from "react";
+
 // import HeaderView from "../../HeaderView";
 
 // import HeaderFile from "./HeaderFile";
@@ -7,12 +9,37 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { app } from "../../Peter/firebase";
 import { AppContext } from "../../GlobalAuth/GlobalAuth";
+import { Layout, Menu } from "antd";
+import {
+  HeaderFile,
+  FolderOpenOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  BulbOutlined,
+  BarChartOutlined,
+  SolutionOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  CloseOutlined
+} from "@ant-design/icons";
+const { Header, Footer, Sider, Content, manu } = Layout;
 
 const courseSelected = app.firestore().collection("user");
 
-const SelectACourse = () => {
+function SelectYourCourse() {
   const hist = useHistory();
-  const { current } = useContext(AppContext);
+
+  const { current } = React.useContext(AppContext)
+  const [courses, setCourses] = useState(true);
+  const [report, setReport] = useState(false);
+  const [perform, setPerform] = useState(false);
+  const [show, setShow] = useState(false);
+  const [alltoggle, allsetToggle] = useState(true);
+
+  const Toggled = () => {
+    allsetToggle(!alltoggle);
+  };
 
   const pry4 = async () => {
     const addedCourse = await app.auth().currentUser;
@@ -139,12 +166,266 @@ const SelectACourse = () => {
     }
     hist.push("/showCourse");
   };
-
   const { datause } = useContext(AppContext);
+
   return (
     <div>
-      <br />
-      <br />
+      <div className="onlyMobile">
+        {alltoggle ? (
+          <MenuUnfoldOutlined
+            style={{
+              fontSize: "25px",
+              fontWeight: "bold",
+              margin: "10px 25px",
+              cursor: "pointer",
+
+            }}
+            onClick={Toggled}
+          />
+        ) : (
+
+          <div>
+
+
+            <Sider
+              style={{
+                height: "100vh",
+                color: "white",
+                zIndex: "1",
+                background: "#2E3347",
+                position: "absolute",
+                top: "80px"
+
+
+              }}
+
+              collapsed={alltoggle}
+            >
+
+              <Menu style={{
+                background: '#2E3347'
+              }} mode="inline" defaultSelectedKeys={["1"]}>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "30px",
+                    color: "white",
+                    background: "#2E3347"
+                  }}
+                  onClick={() => {
+                    Toggled()
+                  }}
+                  key="0"
+                  icon={
+                    <CloseOutlined
+                      style={{
+                        fontSize: "30px",
+                        fontWeight: "bold",
+
+                        cursor: "pointer",
+
+                      }}
+                    />
+                  }
+                >
+
+                </Menu.Item>
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white",
+                    background: "red"
+                  }}
+                  onClick={() => {
+                    hist.push("/coursepages")
+                    Toggled()
+                  }}
+                  key="1"
+                  icon={
+                    <UserOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+
+                    }}
+                  >
+                    Course
+              </div>
+                </Menu.Item>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white"
+                  }}
+                  onClick={() => {
+                    Toggled()
+                    hist.push("/report")
+
+                  }}
+                  key="2"
+                  icon={
+                    <VideoCameraOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Report
+              </div>
+                </Menu.Item>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white"
+                  }}
+                  onClick={() => {
+                    hist.push("/select")
+                    Toggled()
+                    console.log(perform);
+                  }}
+                  key="3"
+                  icon={
+                    <UploadOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Performance
+              </div>
+                </Menu.Item>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white"
+                  }}
+                  onClick={() => {
+                    hist.push("/show")
+                    Toggled()
+                    console.log(perform);
+                  }}
+                  key="4"
+                  icon={
+                    <FolderOpenOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Show
+              </div>
+                </Menu.Item>
+              </Menu>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                {current ? (
+                  <img
+                    src={datause && datause.avatar}
+                    alt="Avatar"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "50%",
+                      border: "2px solid white",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </div>
+              <div>
+                {current ? (
+                  <h3
+                    style={{
+                      color: "white",
+                      lineHeight: "1",
+                      fontSize: "12px",
+                      justifyContent: "center",
+                      display: "flex",
+                      marginTop: "10px",
+                    }}
+                  >
+                    {" "}
+                    {datause && datause.name}{" "}
+                  </h3>
+                ) : null}
+              </div>
+            </Sider>
+          </div>
+
+        )}
+      </div>
       <br />
       <center>Here is our Studied Courses</center>
       <center
@@ -157,9 +438,10 @@ const SelectACourse = () => {
           marginTop: "100px",
         }}
       >
-        {datause && datause}
+        {datause && datause.name}
       </center>
       <br />
+
       <center>
         <h2>choose a course</h2>
       </center>
@@ -267,7 +549,7 @@ const SelectACourse = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SelectACourse;
+export default SelectYourCourse

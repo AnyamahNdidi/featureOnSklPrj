@@ -2,297 +2,535 @@ import { Button, Input } from "antd";
 import React, { useState, useEffect, useContext } from "react";
 import { app } from "../../Peter/firebase";
 import { AppContext } from "../../GlobalAuth/GlobalAuth";
+import { Layout, Menu } from "antd";
+import { LaptopOutlined } from "@ant-design/icons";
+import MUModal from "../../Dash/components/Peter/ModalNav/MUmodal";
+import {
+  HeaderFile,
+  FolderOpenOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  BulbOutlined,
+  BarChartOutlined,
+  SolutionOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  CloseOutlined
+} from "@ant-design/icons";
+import { useHistory } from "react-router-dom"
+import Inputscore from "./Inputscore";
+const { Header, Footer, Sider, Content, manu } = Layout;
 
 const regCourse = app.firestore().collection("studentreg");
+const courseSelection = app.firestore().collection("studentreg");
 
 const ReportPage = () => {
-  const [attention, setAttention] = useState("");
-  const [wellUnderstood, setWellUnderstood] = useState("");
-  const [interesting, setInteresting] = useState("");
 
-  const [attention2, setAttention2] = useState("");
-  const [wellUnderstood2, setWellUnderstood2] = useState("");
-  const [interesting2, setInteresting2] = useState("");
+  const hist = useHistory()
+  const { datause } = React.useContext(AppContext);
+  const { current } = React.useContext(AppContext)
 
-  const [attention3, setAttention3] = useState("");
-  const [wellUnderstood3, setWellUnderstood3] = useState("");
-  const [interesting3, setInteresting3] = useState("");
+  const [courses, setCourses] = useState(true);
+  const [report, setReport] = useState(false);
+  const [perform, setPerform] = useState(false);
+  const [show, setShow] = useState(false);
+  const [alltoggle, allsetToggle] = useState(true);
 
-  const [attention4, setAttention4] = useState("");
-  const [wellUnderstood4, setWellUnderstood4] = useState("");
-  const [interesting4, setInteresting4] = useState("");
 
-  const [attention5, setAttention5] = useState("");
-  const [wellUnderstood5, setWellUnderstood5] = useState("");
-  const [interesting5, setInteresting5] = useState("");
+  /////this is it
+
+  const [visible, setVisible] = useState(true);
+  const [beginer, setBeginer] = useState(false);
+  const [intermediate, setIntermediate] = useState(false);
+  const [advance, setAdvance] = useState(false);
+
+  const [advanceData, setAdvanceData] = useState([]);
+  const [intermediateData, setIntermediateData] = useState([]);
+  const [beginersData, setBeginersData] = useState([]);
+
+  const [readUserData, setReadUserData] = React.useState([])
+  const [readUserData5, setReadUserData5] = React.useState([])
+  const [readUserData6, setReadUserData6] = React.useState([])
+
+  const [readUserDatajs1, setReadUserDatajs1] = React.useState([])
+  const [readUserDatajs2, setReadUserDatajs2] = React.useState([])
+  const [readUserDatajs3, setReadUserDatajs3] = React.useState([])
+
+  const [readUserDatass1, setReadUserDatass1] = React.useState([])
+  const [readUserDatass2, setReadUserDatass2] = React.useState([])
+  const [readUserDatass3, setReadUserDatass3] = React.useState([])
+
+  const [data, setData] = useState([]);
+
 
   const { newCurrent } = useContext(AppContext);
 
-  const [myCourse1, setMyCourse1] = React.useState([]);
-  const [myCourse2, setMyCourse2] = React.useState([]);
-  const [myCourse3, setMyCourse3] = React.useState([]);
-  const [myCourse4, setMyCourse4] = React.useState([]);
-  const [myCourse5, setMyCourse5] = React.useState([]);
-  const [myCourse6, setMyCourse6] = React.useState([]);
-  const [myCourse7, setMyCourse7] = React.useState([]);
-  const [myCourse8, setMyCourse8] = React.useState([]);
-  const [myCourse9, setMyCourse9] = React.useState([]);
+
 
   const [toggle, setToggle] = useState(false);
-
+  const Toggled = () => {
+    allsetToggle(!alltoggle);
+  };
   const onToggle = () => {
     setToggle(true);
   };
 
-  const postRating5 = async () => {
-    const userPresent = await app.auth().currentUser;
 
-    if (userPresent) {
-      regCourse
-        .doc(userPresent.uid)
-        .collection("rating5")
-        .doc()
-        .set({
-          attention: parseInt(attention5),
-          wellUnderstood: parseInt(wellUnderstood5),
-          interesting: parseInt(interesting5),
-        });
+  /// this is dthe function
+
+
+  const readTask = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("pr4")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserData(item)
+          })
+      console.log(readUserData)
     }
-  };
 
-  const postRating4 = async () => {
-    const userPresent = await app.auth().currentUser;
+  }
 
-    if (userPresent) {
-      regCourse
-        .doc(userPresent.uid)
-        .collection("rating4")
-        .doc()
-        .set({
-          attention: parseInt(attention4),
-          wellUnderstood: parseInt(wellUnderstood4),
-          interesting: parseInt(interesting4),
-        });
+  const readTask5 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("pr5")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserData5(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const postRating3 = async () => {
-    const userPresent = await app.auth().currentUser;
+  }
 
-    if (userPresent) {
-      regCourse
-        .doc(userPresent.uid)
-        .collection("rating3")
-        .doc()
-        .set({
-          attention: parseInt(attention3),
-          wellUnderstood: parseInt(wellUnderstood3),
-          interesting: parseInt(interesting3),
-        });
+  const readTask6 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("pr6")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserData6(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const postRating2 = async () => {
-    const userPresent = await app.auth().currentUser;
+  }
 
-    if (userPresent) {
-      regCourse
-        .doc(userPresent.uid)
-        .collection("rating2")
-        .doc()
-        .set({
-          attention: parseInt(attention2),
-          wellUnderstood: parseInt(wellUnderstood2),
-          interesting: parseInt(interesting2),
-        });
+  /// this is for jss class
+
+  const readTaskjs1 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("js1")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserDatajs1(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const postRating1 = async () => {
-    const userPresent = await app.auth().currentUser;
+  }
 
-    if (userPresent) {
-      regCourse
-        .doc(userPresent.uid)
-        .collection("rating1")
-        .doc()
-        .set({
-          attention: parseInt(attention),
-          wellUnderstood: parseInt(wellUnderstood),
-          interesting: parseInt(interesting),
-        });
+  const readTaskjs2 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("js2")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserDatajs2(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const myRegCourse1 = async () => {
-    const course = await app.auth().currentUser;
+  }
 
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("pry4")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse1(i);
-        });
+  const readTaskjs3 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("js3")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserDatajs3(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const myRegCourse2 = async () => {
-    const course = await app.auth().currentUser;
+  }
 
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("pry5")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse2(i);
-        });
+
+  // this is for the ss class
+
+  const readTaskss1 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("ss1")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserDatass1(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const myRegCourse3 = async () => {
-    const course = await app.auth().currentUser;
+  }
 
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("pry6")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse3(i);
-        });
+  const readTaskss2 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("ss2")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserDatass2(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const myRegCourse4 = async () => {
-    const course = await app.auth().currentUser;
+  }
 
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("js1")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse4(i);
-        });
+  const readTaskss3 = async () => {
+    const getCourse = await app.auth().currentUser
+
+    if (getCourse) {
+      await
+        courseSelection.doc(getCourse.uid)
+          .collection("ss3")
+          .onSnapshot((snap) => {
+            const item = []
+            snap.forEach((doc) => {
+              item.push({ ...doc.data(), id: doc.id })
+            });
+            setReadUserDatass3(item)
+          })
+      console.log(readUserData5)
     }
-  };
 
-  const myRegCourse5 = async () => {
-    const course = await app.auth().currentUser;
+  }
 
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("js2")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse5(i);
-        });
-    }
-  };
 
-  const myRegCourse6 = async () => {
-    const course = await app.auth().currentUser;
-
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("js3")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse6(i);
-        });
-    }
-  };
-
-  const myRegCourse7 = async () => {
-    const course = await app.auth().currentUser;
-
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("ss1")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse7(i);
-        });
-    }
-  };
-
-  const myRegCourse8 = async () => {
-    const course = await app.auth().currentUser;
-
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("ss2")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse8(i);
-        });
-    }
-  };
-
-  const myRegCourse9 = async () => {
-    const course = await app.auth().currentUser;
-
-    if (course) {
-      await regCourse
-        .doc(course.uid)
-        .collection("ss3")
-        .onSnapshot((snapshot) => {
-          const i = [];
-          snapshot.forEach((doc) => {
-            i.push(doc.data());
-          });
-          setMyCourse9(i);
-        });
-    }
-  };
 
   React.useEffect(() => {
-    myRegCourse1();
-    myRegCourse2();
-    myRegCourse3();
-    myRegCourse4();
-    myRegCourse5();
-    myRegCourse6();
-    myRegCourse7();
-    myRegCourse8();
-    myRegCourse9();
+    readTask()
+    readTask5()
+    readTask6()
+    readTaskjs1()
+    readTaskjs2()
+    readTaskjs3()
+    readTaskss1()
+    readTaskss2()
+    readTaskss3()
+
   }, []);
 
   return (
     <div>
+
+      <div className="onlyMobile">
+        {alltoggle ? (
+          <MenuUnfoldOutlined
+            style={{
+              fontSize: "25px",
+              fontWeight: "bold",
+              margin: "10px 25px",
+              cursor: "pointer",
+
+            }}
+            onClick={Toggled}
+          />
+        ) : (
+
+          <div>
+
+
+            <Sider
+              style={{
+                height: "100vh",
+                color: "white",
+                zIndex: "1",
+                background: "#2E3347",
+                position: "absolute",
+                top: "80px"
+
+
+              }}
+
+              collapsed={toggle}
+            >
+
+              <Menu style={{
+                background: '#2E3347'
+              }} mode="inline" defaultSelectedKeys={["1"]}>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "30px",
+                    color: "white",
+                    background: "#2E3347"
+                  }}
+                  onClick={() => {
+                    Toggled()
+                  }}
+                  key="0"
+                  icon={
+                    <CloseOutlined
+                      style={{
+                        fontSize: "30px",
+                        fontWeight: "bold",
+
+                        cursor: "pointer",
+
+                      }}
+                    />
+                  }
+                >
+
+                </Menu.Item>
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white",
+                    background: "red"
+                  }}
+                  onClick={() => {
+                    hist.push("/coursepages")
+                    Toggled()
+                  }}
+                  key="1"
+                  icon={
+                    <UserOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+
+                    }}
+                  >
+                    Course
+              </div>
+                </Menu.Item>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white"
+                  }}
+                  onClick={() => {
+                    Toggled()
+
+                  }}
+                  key="2"
+                  icon={
+                    <VideoCameraOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Report
+              </div>
+                </Menu.Item>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white"
+                  }}
+                  onClick={() => {
+                    hist.push("/select")
+                    Toggled()
+                    console.log(perform);
+                  }}
+                  key="3"
+                  icon={
+                    <UploadOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Performance
+              </div>
+                </Menu.Item>
+
+                <Menu.Item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "30px 0",
+                    height: "60px",
+                    color: "white"
+                  }}
+                  onClick={() => {
+                    hist.push("/show")
+                    Toggled()
+                    console.log(perform);
+                  }}
+                  key="4"
+                  icon={
+                    <FolderOpenOutlined
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        margin: "10px 0px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  }
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Show
+              </div>
+                </Menu.Item>
+              </Menu>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                {current ? (
+                  <img
+                    src={datause && datause.avatar}
+                    alt="Avatar"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "50%",
+                      border: "2px solid white",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </div>
+              <div>
+                {current ? (
+                  <h3
+                    style={{
+                      color: "white",
+                      lineHeight: "1",
+                      fontSize: "12px",
+                      justifyContent: "center",
+                      display: "flex",
+                      marginTop: "10px",
+                    }}
+                  >
+                    {" "}
+                    {datause && datause.name}{" "}
+                  </h3>
+                ) : null}
+              </div>
+            </Sider>
+          </div>
+
+        )}
+      </div>
       <center>The Report Page</center>
-      <div
+      {/* <div
         style={{
           display: "flex",
           flexDirection: "row",
@@ -301,6 +539,7 @@ const ReportPage = () => {
           textWeight: "bold",
           marginBottom: "30px",
           marginLeft: "10px",
+          
         }}
       >
         <div
@@ -324,425 +563,1295 @@ const ReportPage = () => {
         >
           Cast a rating
         </div>
-      </div>
+      </div> */}
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-          textWeight: "bold",
-          marginLeft: "10px",
-        }}
-      >
-        <div
-          style={{
-            width: "10%",
-          }}
-        >
-          {myCourse6.map(({ id, subj }) => (
-            <div key={id}> week1</div>
-          ))}
-        </div>
-        <div
-          style={{
-            width: "80%",
-          }}
-        >
+      <div className="allcoursecon">
+
+
+        <div className="courseDataall">
+
+
+
+
+
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              // backgroundColor: "red",
-              margin: "20px 0px",
+              flexWrap: "wrap",
+              justifyContent: "center",
             }}
           >
-            {myCourse9.map(({ id, subj1, subj2, subj3, subj4, subj5 }) => (
-              <div key={id}>
-                <h3
-                  style={{
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    margin: "40px, 0",
-                    marginTop: "40px",
-                    marginBottom: "40px",
-                    width: "150%",
+            {readUserData.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
                   }}
                 >
-                  {" "}
-                  {subj1}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginRight: "20px",
-                      marginLeft: "20px",
-                    }}
-                  ></div>
-                </h3>
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
 
-                <h3
-                  style={{
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    margin: "40px, 0",
-                    marginTop: "40px",
-                    marginBottom: "40px",
-                  }}
-                >
-                  {" "}
-                  {subj2}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginRight: "20px",
-                      marginLeft: "20px",
-                    }}
-                  ></div>
-                </h3>
+                      </div>
+                    </div>
+                    <div style={{
 
-                <h3
-                  style={{
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    margin: "40px, 0",
-                    marginTop: "40px",
-                    marginBottom: "40px",
-                  }}
-                >
-                  {" "}
-                  {subj3}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginRight: "20px",
-                      marginLeft: "20px",
-                    }}
-                  ></div>
-                </h3>
+                      width: "100%"
 
-                <h3
-                  style={{
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    margin: "40px, 0",
-                    marginTop: "40px",
-                    marginBottom: "40px",
-                  }}
-                >
-                  {" "}
-                  {subj4}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginRight: "20px",
-                      marginLeft: "20px",
-                    }}
-                  ></div>
-                </h3>
+                    }}>
+                      <Inputscore />
 
-                <h3
-                  style={{
-                    height: "40px",
-                    display: "flex",
-                    alignItems: "center",
-                    margin: "40px, 0",
-                    marginTop: "40px",
-                    marginBottom: "40px",
-                  }}
-                >
-                  {" "}
-                  {subj5}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginRight: "20px",
-                      marginLeft: "20px",
-                    }}
-                  ></div>
-                </h3>
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+
               </div>
             ))}
 
-            <div>
+            {readUserData.map(({ id, sub2, }) => (
               <div
+                key={id}
+                className="card"
                 style={{
-                  height: "40px",
-                  display: "flex",
-                  alignItems: "center",
-                  margin: "40px, 0",
-                  marginTop: "40px",
-                  marginBottom: "40px",
-                  marginRight: "40px",
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
                 }}
               >
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Attention: 0 - 5"
-                  value={attention}
-                  onChange={(e) => {
-                    setAttention(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Well Understood: 0 - 5"
-                  value={wellUnderstood}
-                  onChange={(e) => {
-                    setWellUnderstood(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Interesting: 0 - 5"
-                  value={interesting}
-                  onChange={(e) => {
-                    setInteresting(e.target.value);
-                  }}
-                />
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    postRating1();
-                    onToggle();
-                    console.log("this is one");
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
                   }}
                 >
-                  Submit
-                </Button>
-              </div>
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
 
-              <div
-                style={{
-                  height: "40px",
-                  display: "flex",
-                  alignItems: "center",
-                  margin: "40px, 0",
-                  marginTop: "40px",
-                  marginBottom: "40px",
-                  marginRight: "40px",
-                }}
-              >
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Attention: 0 - 5"
-                  value={attention2}
-                  onChange={(e) => {
-                    setAttention2(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Well Understood: 0 - 5"
-                  value={wellUnderstood2}
-                  onChange={(e) => {
-                    setWellUnderstood2(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Interesting: 0 - 5"
-                  value={interesting2}
-                  onChange={(e) => {
-                    setInteresting2(e.target.value);
-                  }}
-                />
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    postRating2();
-                    onToggle();
-                    console.log("this is one");
-                  }}
-                >
-                  Submit
-                </Button>
-              </div>
+                      </div>
+                    </div>
+                    <div style={{
 
-              <div
-                style={{
-                  height: "40px",
-                  display: "flex",
-                  alignItems: "center",
-                  margin: "40px, 0",
-                  marginTop: "40px",
-                  marginBottom: "40px",
-                  marginRight: "40px",
-                }}
-              >
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Attention: 0 - 5"
-                  value={attention3}
-                  onChange={(e) => {
-                    setAttention3(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Well Understood: 0 - 5"
-                  value={wellUnderstood3}
-                  onChange={(e) => {
-                    setWellUnderstood3(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Interesting: 0 - 5"
-                  value={interesting3}
-                  onChange={(e) => {
-                    setInteresting3(e.target.value);
-                  }}
-                />
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    postRating3();
-                    onToggle();
-                    console.log("this is one");
-                  }}
-                >
-                  Submit
-                </Button>
-              </div>
+                      width: "100%"
 
-              <div
-                style={{
-                  height: "40px",
-                  display: "flex",
-                  alignItems: "center",
-                  margin: "40px, 0",
-                  marginTop: "40px",
-                  marginBottom: "40px",
-                  marginRight: "40px",
-                }}
-              >
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Attention: 0 - 5"
-                  value={attention4}
-                  onChange={(e) => {
-                    setAttention4(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Well Understood: 0 - 5"
-                  value={wellUnderstood4}
-                  onChange={(e) => {
-                    setWellUnderstood4(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Interesting: 0 - 5"
-                  value={interesting4}
-                  onChange={(e) => {
-                    setInteresting4(e.target.value);
-                  }}
-                />
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    postRating4();
-                    onToggle();
-                    console.log("this is one");
-                  }}
-                >
-                  Submit
-                </Button>
-              </div>
+                    }}>
+                      <Inputscore />
 
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserData.map(({ id, sub3, }) => (
               <div
+                key={id}
+                className="card"
                 style={{
-                  height: "40px",
-                  display: "flex",
-                  alignItems: "center",
-                  margin: "40px, 0",
-                  marginTop: "40px",
-                  marginBottom: "40px",
-                  marginRight: "40px",
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
                 }}
               >
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Attention: 0 - 5"
-                  value={attention5}
-                  onChange={(e) => {
-                    setAttention5(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Well Understood: 0 - 5"
-                  value={wellUnderstood5}
-                  onChange={(e) => {
-                    setWellUnderstood5(e.target.value);
-                  }}
-                />
-                <Input
-                  disabled={toggle}
-                  style={{ margin: "0 5px", width: "80px" }}
-                  type="number"
-                  placeholder="Interesting: 0 - 5"
-                  value={interesting5}
-                  onChange={(e) => {
-                    setInteresting5(e.target.value);
-                  }}
-                />
-                <Button
-                  type="primary"
-                  disabled={toggle}
-                  onClick={() => {
-                    postRating5();
-                    onToggle();
-                    console.log("I am Pressed");
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
                   }}
                 >
-                  Submit
-                </Button>
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
               </div>
-            </div>
+            ))}
+
+
+          </div>
+          <div
+
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserData5.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserData5.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserData5.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserData6.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserData6.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserData6.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+
+
+
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserDatajs1.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserDatajs1.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserDatajs1.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserDatajs2.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserDatajs2.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserDatajs2.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserDatajs3.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserDatajs3.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserDatajs3.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+
+
+
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserDatass1.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserDatass1.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserDatass1.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserDatass2.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserDatass2.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserDatass2.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {readUserDatass3.map(({ id, sub1, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub1.Image} alt="pix1" className="image" />
+                    <h3>{sub1.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+            {readUserDatass3.map(({ id, sub2, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub2.Image} alt="pix1" className="image" />
+                    <h3>{sub2.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+            {readUserDatass3.map(({ id, sub3, }) => (
+              <div
+                key={id}
+                className="card"
+                style={{
+                  background: "white",
+                  width: "300px",
+                  height: "390px",
+                  margin: "0px 10px",
+                  marginTop: "20px",
+                  borderRadius: "5px",
+                }}
+              >
+                <div
+                  className="courseData"
+                  onClick={(id) => {
+                    setVisible(true);
+                    // hist.push("/modal");
+                  }}
+                >
+                  <div className="course__hover">
+                    <img src={sub3.Image} alt="pix1" className="image" />
+                    <h3>{sub3.title} </h3>
+                    <div className="course__side">
+                      {/* <p> {level}</p> */}
+                      <div className="course__sideInner">
+                        <LaptopOutlined />
+
+                      </div>
+                    </div>
+                    <div style={{
+
+                      width: "100%"
+
+                    }}>
+                      <Inputscore />
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+
+
           </div>
         </div>
       </div>
+
+
     </div>
   );
 };
@@ -984,7 +2093,7 @@ export default ReportPage;
 //         }}
 //       ></div>
 //     </h3>
-//   </div>
+//   </div
 // ))}
 
 // {myCourse4.map(({ id, subj1, subj2, subj3, subj4, subj5 }) => (
@@ -1738,3 +2847,57 @@ export default ReportPage;
 // }}
 // />
 // <Button type="primary">Submit</Button>
+
+
+{/* <div
+style={{
+  height: "40px",
+  display: "flex",
+  alignItems: "center",
+  margin: "40px, 0",
+  marginTop: "40px",
+  marginBottom: "40px",
+  marginRight: "40px",
+}}
+>
+<Input
+  disabled={toggle}
+  style={{ margin: "0 5px", width: "80px" }}
+  type="number"
+  placeholder="Attention: 0 - 5"
+  value={attention4}
+  onChange={(e) => {
+    setAttention4(e.target.value);
+  }}
+/>
+<Input
+  disabled={toggle}
+  style={{ margin: "0 5px", width: "80px" }}
+  type="number"
+  placeholder="Well Understood: 0 - 5"
+  value={wellUnderstood4}
+  onChange={(e) => {
+    setWellUnderstood4(e.target.value);
+  }}
+/>
+<Input
+  disabled={toggle}
+  style={{ margin: "0 5px", width: "80px" }}
+  type="number"
+  placeholder="Interesting: 0 - 5"
+  value={interesting4}
+  onChange={(e) => {
+    setInteresting4(e.target.value);
+  }}
+/>
+<Button
+  type="primary"
+  onClick={() => {
+    postRating4();
+    onToggle();
+    console.log("this is one");
+  }}
+>
+  Submit
+</Button>
+</div> */}

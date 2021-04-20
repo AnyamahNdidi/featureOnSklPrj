@@ -53,21 +53,18 @@ const SideBar = ({ isOpen, toggle }) => {
             <SidebarLink to="/" onClick={toggle}>
               Home
             </SidebarLink>
-            <SidebarLink to="/overview" onClick={toggle}>
-              Overview
-            </SidebarLink>
-            <SidebarLink to="/prospect" onClick={toggle}>
-              Prospects
-            </SidebarLink>
-            <SidebarLink to="/whatis" onClick={toggle}>
-              What is Coding
-            </SidebarLink>
-            <SidebarLink to="/Elementry" onClick={toggle}>
-              School Course
-            </SidebarLink>
             <SidebarLink to="/curriculum" onClick={toggle}>
               Curriculum
             </SidebarLink>
+
+            <SidebarLink to="/prospect" onClick={toggle}>
+              Prospects
+            </SidebarLink>
+
+            <SidebarLink to="/Elementry" onClick={toggle}>
+              School Course
+            </SidebarLink>
+
 
             {
               current ? <SidebarLink to="/dasboard">Dashboard</SidebarLink>

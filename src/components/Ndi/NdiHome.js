@@ -82,7 +82,7 @@ function NdiHome() {
                     color: "white",
                     height: "50px",
                     borderRadius: "5px",
-                    width: " 200px",
+                    width: " 220px",
                     fontSize: "20px"
 
                   }}>
